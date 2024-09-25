@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FilingAreaController;
+use App\Http\Controllers\CorrespondenceController;
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
@@ -13,6 +15,12 @@ Route::get('/', function () {
 });
 
 // Auth Routes
-Route::post('/register', [Auth::class, 'register']);
-Route::post('/login', [Auth::class, 'login']);
-Route::post('/logout', [Auth::class, 'logout'])->middleware('auth:sanctum');
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+// Correspondence Routes
+Route::apiResource('/correspondence', CorrespondenceController::class)->middleware('auth:sanctum');
+
+// Filing Area Routes
+Route::apiResource('/filing-area', FilingAreaController::class)->middleware('auth:sanctum');
