@@ -14,7 +14,7 @@ class CorrespondenceController extends Controller
      */
     public function index()
     {
-        return CorrespondenceResource::collection(Correspondence::all());
+        return CorrespondenceResource::collection(Correspondence::latest()->get());
     }
 
     /**
