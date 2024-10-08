@@ -11,7 +11,7 @@ class Correspondence extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['fileNumber', 'subject', 'filing_area_id', 'receivedFrom', 'correspondenceDate', 'dateReceived', 'comments'];
+    protected $fillable = ['fileNumber', 'subject', 'filing_area_id', 'receivedFrom', 'correspondenceDate', 'dateReceived', 'comments', 'sentDate', 'flagged'];
 
     public function FilingArea(): BelongsTo
     {
