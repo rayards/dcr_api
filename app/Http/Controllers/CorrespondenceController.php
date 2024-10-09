@@ -14,7 +14,7 @@ class CorrespondenceController extends Controller
      */
     public function index()
     {
-        return CorrespondenceResource::collection(Correspondence::latest());
+        return CorrespondenceResource::collection(Correspondence::latest()->get());
         // Below code implements pagination but still requires per_page variable from frontend to use in paginate method
         // return CorrespondenceResource::collection(Correspondence::latest()->paginate(15));
     }
