@@ -14,18 +14,23 @@ class CorrespondenceResource extends JsonResource
      */
     public function toArray(Request $request)
     {
-        return parent::toArray($request);
+        // return parent::toArray($request);
 
-        // return json_encode([
-        //     'id' => $this->id,
-        //     'fileNumber' => $this->fileNumber,
-        //     'subject' => $this->subject,
-        //     'filing_area_id' => $this->file_area_id,
-        //     'receivedFrom' => $this->receivedFrom,
-        //     'correspondenceDate' => $this->correspondenceDate,
-        //     'dateReceived' => $this->dateReceived,
-        //     'comments' => $this->comments
-        // ]);
+        // dd($this);
+
+        return ([
+            'id' => $this->id,
+            'fileNumber' => $this->fileNumber,
+            'subject' => $this->subject,
+            'filing_area_id' => $this->filing_area_id,
+            'receivedFrom' => $this->receivedFrom,
+            'correspondenceDate' => $this->correspondenceDate,
+            'dateReceived' => $this->dateReceived,
+            'sentDate' => $this->sentDate,
+            'comments' => $this->comments,
+            'updated_at' => $this->updated_at->diffForHumans(),
+            'filing_area' => $this->FilingArea
+        ]);
 
         // return [
         //     'subject' => $this->subject
