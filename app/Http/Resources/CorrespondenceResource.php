@@ -29,7 +29,8 @@ class CorrespondenceResource extends JsonResource
             'sentDate' => $this->sentDate,
             'comments' => $this->comments,
             'updated_at' => $this->updated_at->diffForHumans(),
-            'filing_area' => $this->FilingArea
+            'filing_area' => $this->FilingArea,
+            'flagged' => $this->flagged
         ]);
 
         // return [
