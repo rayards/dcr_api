@@ -21,6 +21,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 // Correspondence Routes
 Route::apiResource('/correspondence', CorrespondenceController::class)->middleware('auth:sanctum');
+Route::get('/flagged', [CorrespondenceController::class, 'flagged'])->middleware('auth:sanctum')->name('correspondence.flagged');
 
 // Filing Area Routes
 Route::apiResource('/filing-area', FilingAreaController::class)->middleware('auth:sanctum');

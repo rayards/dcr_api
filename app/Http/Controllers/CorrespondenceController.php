@@ -20,11 +20,11 @@ class CorrespondenceController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of flagged resources.
      */
-    public function create()
+    public function flagged()
     {
-        //
+        return CorrespondenceResource::collection(Correspondence::with('FilingArea')->where('flagged', true)->latest('updated_at')->get());
     }
 
     /**
