@@ -28,10 +28,21 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        // dd($request);
         $request->validate([
             'email' => 'required|email|exists:users',
-            'password' => 'required'
+            'password' => 'required',
+            'database' => 'required'
         ]);
+
+        config(['database.connections.mysql.database' => $request->database]);
+
+        // dd(config()->get('database.connections.mysql.database'));
+
+        session(['database' => $request->database]);
+
+        // dd(session('database'));
+
 
         $user = User::where('email', $request->email)->first();
 
