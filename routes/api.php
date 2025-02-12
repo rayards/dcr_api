@@ -16,3 +16,6 @@ Route::get('/', function () {
 Route::post('/register', [Auth::class, 'register']);
 Route::post('/login', [Auth::class, 'login']);
 Route::post('/logout', [Auth::class, 'logout'])->middleware('auth:sanctum');
+
+//Correspondence Routes
+Route::apiResource('/correspondence', CorrespondenceController::class);
