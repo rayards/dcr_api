@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCorrespondenceRequest;
 use App\Http\Requests\UpdateCorrespondenceRequest;
 use App\Http\Resources\CorrespondenceResource;
 use App\Models\Correspondence;
+use Illuminate\Http\Request;
 
 class CorrespondenceController extends Controller
 {
@@ -69,5 +70,17 @@ class CorrespondenceController extends Controller
         $correspondence->delete();
 
         return response()->noContent();
+    }
+
+    /**
+     * Change the flagged status of the resource.
+     */
+    public function flag(Correspondence $correspondence, Request $request)
+    {
+        $flagged = $request->flagged;
+
+        // $correspondence->update(['flagged' => $flagged]);
+
+        return CorrespondenceResource::make($correspondence);
     }
 }

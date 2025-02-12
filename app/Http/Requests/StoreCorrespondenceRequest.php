@@ -28,7 +28,9 @@ class StoreCorrespondenceRequest extends FormRequest
             'received_from' => 'required|string|max:255',
             'correspondence_date' => 'required|string',
             'date_received' => 'required|string',
-            'comments' => 'string|max:255'
+            'date_sent' => 'required|string',
+            'comments' => 'string|max:255',
+            'flagged' => 'boolean',
         ];
     }
 }

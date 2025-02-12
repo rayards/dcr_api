@@ -10,7 +10,7 @@ class Correspondence extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['file_number', 'subject', 'filing_area_id', 'received_from', 'correspondence_date', 'date_received', 'comments'];
+    protected $fillable = ['file_number', 'subject', 'filing_area_id', 'received_from', 'correspondence_date', 'date_received', 'date_sent', 'comments', 'flagged'];
 
     public function filing_area(): BelongsTo
     {

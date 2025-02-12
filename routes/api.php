@@ -21,4 +21,7 @@ Route::post('/logout', [Auth::class, 'logout'])->middleware('auth:sanctum');
 
 //Correspondence Routes
 Route::apiResource('/correspondence', CorrespondenceController::class);
+Route::get('/correspondence/{correspondence}/flag', [CorrespondenceController::class, 'flag']);
+
+//Filing Area Routes
 Route::apiResource('/filing-area', FilingAreaController::class);
