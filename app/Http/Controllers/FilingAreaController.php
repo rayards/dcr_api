@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FilingArea;
+use App\Http\Resources\FilingAreaResource;
 use App\Http\Requests\StoreFilingAreaRequest;
 use App\Http\Requests\UpdateFilingAreaRequest;
-use App\Models\FilingArea;
 
 class FilingAreaController extends Controller
 {
@@ -13,7 +14,7 @@ class FilingAreaController extends Controller
      */
     public function index()
     {
-        //
+        return FilingAreaResource::collection(FilingArea::all());
     }
 
     /**
@@ -29,7 +30,9 @@ class FilingAreaController extends Controller
      */
     public function store(StoreFilingAreaRequest $request)
     {
-        //
+        $filing_area = FilingArea::create($request->validated());
+
+        return FilingAreaResource::make($filing_area);
     }
 
     /**
@@ -37,7 +40,7 @@ class FilingAreaController extends Controller
      */
     public function show(FilingArea $filingArea)
     {
-        //
+        return FilingAreaResource::make($filingArea);
     }
 
     /**
@@ -53,7 +56,9 @@ class FilingAreaController extends Controller
      */
     public function update(UpdateFilingAreaRequest $request, FilingArea $filingArea)
     {
-        //
+        $filingArea->update($request->validated());
+
+        return FilingAreaResource::make($filingArea);
     }
 
     /**
@@ -61,6 +66,8 @@ class FilingAreaController extends Controller
      */
     public function destroy(FilingArea $filingArea)
     {
-        //
+        $filingArea->delete();
+
+        return response()->noContent();
     }
 }
