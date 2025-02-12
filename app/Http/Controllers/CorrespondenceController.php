@@ -30,7 +30,9 @@ class CorrespondenceController extends Controller
      */
     public function store(StoreCorrespondenceRequest $request)
     {
-        //
+        $correspondence = Correspondence::create($request->validated());
+
+        return CorrespondenceResource::make($correspondence);
     }
 
     /**
