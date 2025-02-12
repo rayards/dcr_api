@@ -14,13 +14,15 @@ return new class extends Migration
     {
         Schema::create('correspondences', function (Blueprint $table) {
             $table->id();
-            $table->string('fileNumber')->nullable();
+            $table->string('file_number')->nullable();
             $table->string('subject');
             $table->foreignIdFor(FilingArea::class);
-            $table->string('receivedFrom');
-            $table->date('correspondenceDate');
-            $table->date('dateReceived');
+            $table->string('received_from');
+            $table->date('correspondence_date');
+            $table->date('date_received');
+            $table->date('date_sent');
             $table->text('comments')->nullable();
+            $table->boolean('flagged')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });
