@@ -40,7 +40,7 @@ class CorrespondenceController extends Controller
      */
     public function show(Correspondence $correspondence)
     {
-        //
+        return CorrespondenceResource::make($correspondence);
     }
 
     /**
@@ -56,7 +56,9 @@ class CorrespondenceController extends Controller
      */
     public function update(UpdateCorrespondenceRequest $request, Correspondence $correspondence)
     {
-        //
+        $correspondence->update($request->validated());
+
+        return CorrespondenceResource::make($correspondence);
     }
 
     /**
@@ -64,6 +66,8 @@ class CorrespondenceController extends Controller
      */
     public function destroy(Correspondence $correspondence)
     {
-        //
+        $correspondence->delete();
+
+        return response()->noContent();
     }
 }
