@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CorrespondenceController;
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();

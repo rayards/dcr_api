@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCorrespondenceRequest;
 use App\Http\Requests\UpdateCorrespondenceRequest;
+use App\Http\Resources\CorrespondenceResource;
 use App\Models\Correspondence;
 
 class CorrespondenceController extends Controller
@@ -13,7 +14,7 @@ class CorrespondenceController extends Controller
      */
     public function index()
     {
-        //
+        return CorrespondenceResource::collection(Correspondence::all());
     }
 
     /**
