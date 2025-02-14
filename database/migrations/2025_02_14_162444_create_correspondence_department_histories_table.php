@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('correspondence_department_histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('correspondence_id')->constrained();
+            $table->foreignId('department_id')->constrained();
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
             $table->timestamps();
         });
     }

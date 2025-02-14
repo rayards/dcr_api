@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Department;
 use App\Models\FilingArea;
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -17,12 +19,14 @@ return new class extends Migration
             $table->string('file_number')->nullable();
             $table->string('subject');
             $table->foreignIdFor(FilingArea::class);
-            $table->string('received_from');
-            $table->date('correspondence_date');
+            $table->string('received_from')->nullable();
+            $table->date('correspondence_date')->nullable();
             $table->date('date_received');
-            $table->date('date_sent');
+            $table->date('date_sent')->nullable();
             $table->text('comments')->nullable();
             $table->boolean('flagged')->default(false);
+            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(Department::class, 'creator_department_id');
             $table->timestamps();
             $table->softDeletes();
         });
