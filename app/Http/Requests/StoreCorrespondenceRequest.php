@@ -24,13 +24,15 @@ class StoreCorrespondenceRequest extends FormRequest
         return [
             'file_number' => 'string|max:20',
             'subject' => 'required|string|max:255',
-            'filing_area_id' => 'required|integer|max:10',
+            'filing_area_id' => 'required|integer',
             'received_from' => 'required|string|max:255',
             'correspondence_date' => 'required|string',
             'date_received' => 'required|string',
             'date_sent' => 'required|string',
             'comments' => 'string|max:255',
             'flagged' => 'boolean',
+            'user_id' => 'required|integer',
+            'creator_department_id' => 'required|integer',
         ];
     }
 }
