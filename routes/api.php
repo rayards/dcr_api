@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilingAreaController;
@@ -14,10 +13,7 @@ Route::get('/', function () {
     return 'Hello World!';
 });
 
-// Auth Routes
-Route::post('/register', [Auth::class, 'register']);
-Route::post('/login', [Auth::class, 'login']);
-Route::post('/logout', [Auth::class, 'logout'])->middleware('auth:sanctum');
+// Route::get('/user', [Auth::class, 'user']);
 
 //Correspondence Routes
 Route::apiResource('/correspondence', CorrespondenceController::class);
