@@ -9,6 +9,7 @@ use App\Http\Resources\CorrespondenceResource;
 use App\Http\Requests\StoreCorrespondenceRequest;
 use App\Http\Requests\UpdateCorrespondenceRequest;
 use App\Http\Resources\CorrespondenceInfoResource;
+use App\Models\CorrespondenceDepartmentHistory;
 
 class CorrespondenceController extends Controller
 {
@@ -35,6 +36,12 @@ class CorrespondenceController extends Controller
     {
         $correspondence = Correspondence::create($request->validated());
 
+        $correspondence_history = CorrespondenceDepartmentHistory::create([
+            'correspondence_id' => $correspondence->id,
+            'department_id' => $correspondence->creator_department_id,
+            'start_date' => $correspondence->date_received,
+        ]);
+
         return CorrespondenceResource::make($correspondence);
     }
 
@@ -60,6 +67,10 @@ class CorrespondenceController extends Controller
     public function update(UpdateCorrespondenceRequest $request, Correspondence $correspondence)
     {
         $correspondence->update($request->validated());
+
+
+        CorrespondenceDepartmentHistory::where('correspondence_id', $correspondence->id)->where('department_id', $correspondence->creator_department_id)->update(['end_date' => $request->date_sent]);
+
 
         return CorrespondenceResource::make($correspondence);
     }
