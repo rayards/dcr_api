@@ -11,7 +11,7 @@ class UpdateCorrespondenceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,17 @@ class UpdateCorrespondenceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'file_number' => 'string|max:20|nullable',
+            'subject' => 'required|string|max:255',
+            'filing_area_id' => 'required|integer',
+            'received_from' => 'required|string|max:255',
+            'correspondence_date' => 'required|string',
+            'date_received' => 'required|string',
+            'date_sent' => 'string|nullable',
+            'comments' => 'string|max:255|nullable',
+            'flagged' => 'required|boolean',
+            'user_id' => 'required|integer',
+            'creator_department_id' => 'required|integer',
         ];
     }
 }

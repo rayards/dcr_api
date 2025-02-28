@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Models\Correspondence;
+use App\Models\CorrespondenceInfo;
+use App\Http\Resources\CorrespondenceResource;
 use App\Http\Requests\StoreCorrespondenceRequest;
 use App\Http\Requests\UpdateCorrespondenceRequest;
-use App\Http\Resources\CorrespondenceResource;
-use App\Models\Correspondence;
-use Illuminate\Http\Request;
+use App\Http\Resources\CorrespondenceInfoResource;
 
 class CorrespondenceController extends Controller
 {
@@ -15,7 +17,7 @@ class CorrespondenceController extends Controller
      */
     public function index()
     {
-        return CorrespondenceResource::collection(Correspondence::all());
+        return CorrespondenceInfoResource::collection(CorrespondenceInfo::all());
     }
 
     /**
@@ -39,9 +41,9 @@ class CorrespondenceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Correspondence $correspondence)
+    public function show(CorrespondenceInfo $correspondence)
     {
-        return CorrespondenceResource::make($correspondence);
+        return CorrespondenceInfoResource::make($correspondence);
     }
 
     /**
@@ -77,10 +79,11 @@ class CorrespondenceController extends Controller
      */
     public function flag(Correspondence $correspondence, Request $request)
     {
-        $flagged = $request->flagged;
+        dd($request);
 
         // $correspondence->update(['flagged' => $flagged]);
 
-        return CorrespondenceResource::make($correspondence);
+        // return CorrespondenceResource::make($correspondence);
+        return $flagged;
     }
 }
